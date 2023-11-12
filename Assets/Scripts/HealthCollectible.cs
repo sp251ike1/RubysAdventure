@@ -1,18 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-/// <summary>
-/// Will handle giving health to the character when they enter the trigger.
-/// </summary>
-public class HealthCollectible : MonoBehaviour 
+public class HealthCollectible : MonoBehaviour
 {
+    public AudioClip collectedClip;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         RubyController controller = other.GetComponent<RubyController>();
 
         if (controller != null)
         {
-            controller.ChangeHealth(1);
-            Destroy(gameObject);
+            if (controller.health < controller.maxHealth)
+            {
+                controller.ChangeHealth(1);
+                Destroy(gameObject);
+
+                controller.PlaySound(collectedClip);
+            }
         }
+
     }
 }
