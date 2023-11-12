@@ -1,23 +1,171 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+ï»¿using System;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // ========= MOVEMENT =================
+    public float speed = 4;
+    
+    // ======== HEALTH ==========
+    public int maxHealth = 5;
+    public float timeInvincible = 2.0f;
+    public Transform respawnPosition;
+    public ParticleSystem hitParticle;
+    
+    // ======== PROJECTILE ==========
+    public GameObject projectilePrefab;
+
+    // ======== AUDIO ==========
+    public AudioClip hitSound;
+    public AudioClip shootingSound;
+    
+    // ======== HEALTH ==========
+    public int health
+    {
+        get { return currentHealth; }
+    }
+    
+    // =========== MOVEMENT ==============
+    Rigidbody2D rigidbody2d;
+    Vector2 currentInput;
+    
+    // ======== HEALTH ==========
+    int currentHealth;
+    float invincibleTimer;
+    bool isInvincible;
+   
+    // ==== ANIMATION =====
+    Animator animator;
+    Vector2 lookDirection = new Vector2(1, 0);
+    
+    // ================= SOUNDS =======================
+    AudioSource audioSource;
+    
     void Start()
     {
+        // =========== MOVEMENT ==============
+        rigidbody2d = GetComponent<Rigidbody2D>();
+                
+        // ======== HEALTH ==========
+        invincibleTimer = -1.0f;
+        currentHealth = maxHealth;
         
+        // ==== ANIMATION =====
+        animator = GetComponent<Animator>();
+        
+        // ==== AUDIO =====
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // ================= HEALTH ====================
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
+
+        // ============== MOVEMENT ======================
         float horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(horizontal);
-        Vector2 position = transform.position;  //The first word before the variable name, Vector2, is the type of the variable. Types tell the computer what kind of data you want to store, so it can get the right amount of space in memory. A Vector2 is a data type that stores two numbers. Remember the Transform values in the Inspector that use x for the horizontal position, y for the vertical position and z for the depth. Those 3 numbers form a coordinate,. Because this game is 2D, you don’t need to store the z-axis position, so you can use a Vector2 here to only store the x and y positions.
-        position.x = position.x + 0.1f * horizontal; //Here you are accessing the x value, which is the horizontal position. To move your GameObject slightly to the right, you have added 0.1 to the x value and stored the result back into x. 
-        transform.position = position;  //In the third line, you stored that new Position inside the position of the Transform: Before this line of code, you were only modifying a copy, like doing math on a side sheet of paper. Now that you have the new result, you need to give it back to the Transform component so that it actually knows to move the GameObject 0.1 units to the right! The computer executes this function for every new frame, so your object will move 0.1 unit to the right in each new frame compared to the last one. This gives the illusion of the GameObject continuously moving to the right.
+        float vertical = Input.GetAxis("Vertical");
+                
+        Vector2 move = new Vector2(horizontal, vertical);
+        
+        if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        currentInput = move;
+
+
+        // ============== ANIMATION =======================
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
+        // ============== PROJECTILE ======================
+
+        if (Input.GetKeyDown(KeyCode.C))
+            LaunchProjectile();
+        
+        // ======== DIALOGUE ==========
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, 1 << LayerMask.NameToLayer("NPC"));
+            if (hit.collider != null)
+            {
+                NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+                if (character != null)
+                {
+                    character.DisplayDialog();
+                }  
+            }
+        }
+ 
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 position = rigidbody2d.position;
+        
+        position = position + currentInput * speed * Time.deltaTime;
+        
+        rigidbody2d.MovePosition(position);
+    }
+
+    // ===================== HEALTH ==================
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        { 
+            if (isInvincible)
+                return;
+            
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+            
+            animator.SetTrigger("Hit");
+            audioSource.PlayOneShot(hitSound);
+
+            Instantiate(hitParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        }
+        
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
+        if(currentHealth == 0)
+            Respawn();
+        
+        UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
+    }
+    
+    void Respawn()
+    {
+        ChangeHealth(maxHealth);
+        transform.position = respawnPosition.position;
+    }
+    
+    // =============== PROJECTICLE ========================
+    void LaunchProjectile()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 300);
+        
+        animator.SetTrigger("Launch");
+        audioSource.PlayOneShot(shootingSound);
+    }
+    
+    // =============== SOUND ==========================
+
+    //Allow to play a sound on the player sound source. used by Collectible
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
