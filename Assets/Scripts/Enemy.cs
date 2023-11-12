@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 {
 	// ====== ENEMY MOVEMENT ========
 	public float speed;
-	public float timeToChange;
-	public bool horizontal;
+    public bool vertical;
+    public float changeTime;
 
 	public GameObject smokeParticleEffect;
 	public ParticleSystem fixedParticleEffect;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 	public AudioClip fixedSound;
 	
 	Rigidbody2D rigidbody2d;
-	float remainingTimeToChange;
+	float timer;
 	Vector2 direction = Vector2.right;
 	bool repaired = false;
 	
@@ -32,9 +32,9 @@ public class Enemy : MonoBehaviour
 	void Start ()
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
-		remainingTimeToChange = timeToChange;
+		timer = changeTime;
 
-		direction = horizontal ? Vector2.right : Vector2.down;
+		direction = vertical ? Vector2.right : Vector2.down;
 
 		animator = GetComponent<Animator>();
 
@@ -46,11 +46,11 @@ public class Enemy : MonoBehaviour
 		if(repaired)
 			return;
 		
-		remainingTimeToChange -= Time.deltaTime;
+		timer -= Time.deltaTime;
 
-		if (remainingTimeToChange <= 0)
+		if (timer <= 0)
 		{
-			remainingTimeToChange += timeToChange;
+			timer += changeTime;
 			direction *= -1;
 		}
 
