@@ -12,7 +12,10 @@ public class RubyController : MonoBehaviour
     public AudioClip throwSound;
     public AudioClip hitSound;
 
-    public int health { get { return currentHealth; } }
+    public int health
+    {
+        get { return currentHealth; }
+    }
     int currentHealth;
 
     public float timeInvincible = 2.0f;
@@ -107,7 +110,7 @@ public class RubyController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
-        UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
     void Launch()
