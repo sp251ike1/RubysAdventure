@@ -45,4 +45,42 @@ public class UIDialogueBox : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
+
+	public Text fixedRobotsText;
+    public Text winMessageText;
+    public Text loseMessageText;
+	
+    private int fixedRobotsCount = 0;
+
+    // Call this method when a robot is fixed
+    public void IncrementFixedRobotsCount()
+    {
+        fixedRobotsCount++;
+        UpdateFixedRobotsUI();
+        CheckWinCondition();
+    }
+
+    // Update the "Fixed Robots" UI Text
+    void UpdateFixedRobotsUI()
+    {
+        fixedRobotsText.text = "Fixed Robots: " + fixedRobotsCount;
+    }
+
+    // Check if all robots are fixed, show win message if true
+    void CheckWinCondition()
+    {
+        if (fixedRobotsCount == totalRobotCount)  // Replace totalRobotCount with the actual total number of robots
+        {
+            winMessageText.text = "You Win! Game Created by Team Coding 18 Press R to restart";
+            // You can also add other win-related actions here
+        }
+    }
+
+	// Call this method when the player loses
+    public void PlayerLose()
+    {
+        loseMessageText.text = "You lost! Press R to restart";
+        // Disable player movement here
+        // You may also want to disable other gameplay elements
+    }
 }
