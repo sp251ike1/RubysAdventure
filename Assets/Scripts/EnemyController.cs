@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -7,12 +8,15 @@ public class EnemyController : MonoBehaviour
     public bool vertical;
     public float changeTime = 3.0f;
 
+    //public ParticleSystem ParticleSystem;
+
     Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
     bool broken = true;
 
     Animator animator;
+    //ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        //particleSystem = GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -82,5 +87,8 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.simulated = false;
         //optional if you added the fixed animation
         animator.SetTrigger("Fixed");
+        //particleSystem.enableEmission = false;
+        //Destroy()
+        //ParticleSystem.Stop();
     }
 }
