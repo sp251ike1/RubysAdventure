@@ -72,7 +72,6 @@ public class UIDialogueBox : MonoBehaviour
         if (fixedRobotsCount == totalRobotCount)  // Replace totalRobotCount with the actual total number of robots
         {
             winMessageText.text = "You Win! Game Created by Team Coding 18 Press R to restart";
-            // You can also add other win-related actions here
         }
     }
 
@@ -80,7 +79,5 @@ public class UIDialogueBox : MonoBehaviour
     public void PlayerLose()
     {
         loseMessageText.text = "You lost! Press R to restart";
-        // Disable player movement here
-        // You may also want to disable other gameplay elements
     }
 }
