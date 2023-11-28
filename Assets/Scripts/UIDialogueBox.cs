@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UIDialogueBox : MonoBehaviour
 {
 	public static UIDialogueBox Instance { get; private set; }
-	
+
 	public Image portrait;
 	public TextMeshProUGUI text;
 
@@ -19,10 +19,10 @@ public class UIDialogueBox : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start () 
+	void Start()
 	{
 		//disable on start, will be shown/hidden by the dialogue triggers.
-		gameObject.SetActive(false);	
+		gameObject.SetActive(false);
 	}
 
 
@@ -40,44 +40,10 @@ public class UIDialogueBox : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 	}
-	
+
 	public void Hide()
 	{
 		gameObject.SetActive(false);
 	}
-
-	public Text fixedRobotsText;
-    public Text winMessageText;
-    public Text loseMessageText;
-	
-    private int fixedRobotsCount = 0;
-
-    // Call this method when a robot is fixed
-    public void IncrementFixedRobotsCount()
-    {
-        fixedRobotsCount++;
-        UpdateFixedRobotsUI();
-        CheckWinCondition();
-    }
-
-    // Update the "Fixed Robots" UI Text
-    void UpdateFixedRobotsUI()
-    {
-        fixedRobotsText.text = "Fixed Robots: " + fixedRobotsCount;
-    }
-
-    // Check if all robots are fixed, show win message if true
-    void CheckWinCondition()
-    {
-        if (fixedRobotsCount == totalRobotCount)  // Replace totalRobotCount with the actual total number of robots
-        {
-            winMessageText.text = "You Win! Game Created by Team Coding 18 Press R to restart";
-        }
-    }
-
-	// Call this method when the player loses
-    public void PlayerLose()
-    {
-        loseMessageText.text = "You lost! Press R to restart";
-    }
 }
+
