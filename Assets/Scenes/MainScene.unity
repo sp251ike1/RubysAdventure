@@ -4934,6 +4934,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: c87de0cae68cdbb409eec8ba23a860d0, type: 3}
     - target: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
         type: 3}
+      propertyPath: hitParticle
+      value: 
+      objectReference: {fileID: 3032662816014629373, guid: 17da090cbd3ec504ba4da073aa459073,
+        type: 3}
+    - target: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
+        type: 3}
       propertyPath: particleEffect
       value: 
       objectReference: {fileID: 9594479}
@@ -7342,7 +7348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd5fd8d7f3c3e247bbf0e8c9cefb0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 909695538}
+  bar: {fileID: 909695538}
 --- !u!114 &925255955
 MonoBehaviour:
   m_ObjectHideFlags: 0
