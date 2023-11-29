@@ -23,9 +23,6 @@ public class EnemyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
-        //particleSystem = GetComponent<ParticleSystem>();
-        //ParticleSystem particleSystem = transform.Find("Particle System").GetComponent<ParticleSystem>();
-        //ParticleSystem particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
