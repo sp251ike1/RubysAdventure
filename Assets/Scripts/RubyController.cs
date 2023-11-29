@@ -12,6 +12,8 @@ public class RubyController : MonoBehaviour
     public AudioClip throwSound;        //plays Sound when thrown
     public AudioClip hitSound;          //plays sound when something is hit
 
+    public ParticleSystem gainHealth;
+
 
 
     public int health

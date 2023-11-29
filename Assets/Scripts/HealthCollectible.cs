@@ -14,10 +14,11 @@ public class HealthCollectible : MonoBehaviour
         {
             if (controller.health < controller.maxHealth)
             {
-                controller.ChangeHealth(1);
-                Destroy(gameObject);
+                controller.ChangeHealth(1); //increase playerHealth by a value of 1
+                Destroy(gameObject);        //destroy the object that gave health
 
-                controller.PlaySound(collectedClip);
+                controller.PlaySound(collectedClip);    //play collectedHealth sound
+
             }
         }
 
