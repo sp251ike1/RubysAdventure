@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
@@ -12,7 +13,10 @@ public class RubyController : MonoBehaviour
     public AudioClip throwSound;        //plays Sound when thrown
     public AudioClip hitSound;          //plays sound when something is hit
 
-    public ParticleSystem gainHealth;
+    //public ParticleSystem gainHealth;
+
+    [SerializeField] ParticleSystem collectParticle = null;
+
 
 
 
@@ -34,6 +38,7 @@ public class RubyController : MonoBehaviour
     Vector2 lookDirection = new Vector2(1, 0);
 
     AudioSource audioSource;
+    ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,8 @@ public class RubyController : MonoBehaviour
         currentHealth = maxHealth;
 
         audioSource = GetComponent<AudioSource>();
+        UnityEngine.Debug.Log("HelloStart1");
+        particleSystem = GetComponent<ParticleSystem>();
 
     }
 
@@ -111,6 +118,7 @@ public class RubyController : MonoBehaviour
             invincibleTimer = timeInvincible;
 
             PlaySound(hitSound);    //trigger hitSound AudioClip variable to play when takenDamage
+        
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -128,6 +136,7 @@ public class RubyController : MonoBehaviour
         animator.SetTrigger("Launch");
 
         PlaySound(throwSound);     //trigger throwSound AudioClip variable to play when launch projectile
+        UnityEngine.Debug.Log("HelloLaunch2");
     }
 
     public void PlaySound(AudioClip clip)
@@ -135,5 +144,11 @@ public class RubyController : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
+    public void Particle()
+    {
+        //play the collect particle system
+        particleSystem.Play();
+        UnityEngine.Debug.Log("HelloCollect3");
+    }
 
 }
