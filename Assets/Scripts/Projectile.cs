@@ -20,19 +20,19 @@ public class Projectile : MonoBehaviour
     {
         if (transform.position.magnitude > 1000.0f)
         {
-            Destroy(gameObject);
+            Destroy(gameObject);        //destroy projectile
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
+        EnemyController e = other.collider.GetComponent<EnemyController>();     //e is variable representing instance of EnemyController script attached to object (in this case the enemy)
         if (e != null)
         {
-           e.Fix();
+           e.Fix();     //Fix robot/enemy (look in enemy controller script)
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject);    //destroy projectile
     }
 }
 

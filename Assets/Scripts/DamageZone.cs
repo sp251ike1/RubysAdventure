@@ -2,6 +2,9 @@
 
 public class DamageZone : MonoBehaviour 
 {
+
+    public ParticleSystem particleEffect;
+
     void OnTriggerStay2D(Collider2D other)
     {
         RubyController controller = other.GetComponent<RubyController>();

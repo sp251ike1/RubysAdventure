@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 3.0f;      //has speed
 
-    public int maxHealth = 5;
+    public int maxHealth = 5;       //has maxHealth
 
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab;     //has a projectile
 
-    public AudioClip throwSound;
-    public AudioClip hitSound;
+    public AudioClip throwSound;        //plays Sound when thrown
+    public AudioClip hitSound;          //plays sound when something is hit
+
+
 
     public int health
     {
@@ -40,6 +42,7 @@ public class RubyController : MonoBehaviour
         currentHealth = maxHealth;
 
         audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -105,7 +108,7 @@ public class RubyController : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
 
-            PlaySound(hitSound);
+            PlaySound(hitSound);    //trigger hitSound AudioClip variable to play when takenDamage
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -122,11 +125,13 @@ public class RubyController : MonoBehaviour
 
         animator.SetTrigger("Launch");
 
-        PlaySound(throwSound);
+        PlaySound(throwSound);     //trigger throwSound AudioClip variable to play when launch projectile
     }
 
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
     }
+
+
 }

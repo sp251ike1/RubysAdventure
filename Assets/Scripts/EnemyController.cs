@@ -74,16 +74,16 @@ public class EnemyController : MonoBehaviour
 
         if (player != null)
         {
-            player.ChangeHealth(-1);
+            player.ChangeHealth(-1);        //decrease player health by a value of 1
         }
     }
 
     //Public because we want to call it from elsewhere like the projectile script
-    public void Fix()
+    public void Fix()           //Fix broken robots function
     {
         broken = false;
         rigidbody2D.simulated = false;
-        animator.SetTrigger("Fixed");
+        animator.SetTrigger("Fixed");       
         ParticleSystem.Stop();
     }
 }
