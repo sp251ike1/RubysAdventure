@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     public bool vertical;
     public float changeTime = 3.0f;
 
-    //public ParticleSystem ParticleSystem;
+    public ParticleSystem ParticleSystem;
 
     Rigidbody2D rigidbody2D;
     float timer;
@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
     bool broken = true;
 
     Animator animator;
-    //ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +24,8 @@ public class EnemyController : MonoBehaviour
         timer = changeTime;
         animator = GetComponent<Animator>();
         //particleSystem = GetComponent<ParticleSystem>();
+        //ParticleSystem particleSystem = transform.Find("Particle System").GetComponent<ParticleSystem>();
+        //ParticleSystem particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -89,6 +90,8 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         //particleSystem.enableEmission = false;
         //Destroy()
-        //ParticleSystem.Stop();
+        ParticleSystem.Stop();
+        //GetComponent<ParticleSystem>().Stop();
+        //GetComponent<ParticleSystem>().Stop();
     }
 }

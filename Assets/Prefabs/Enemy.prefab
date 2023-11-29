@@ -262,6 +262,7 @@ MonoBehaviour:
   speed: 2
   vertical: 0
   changeTime: 3
+  ParticleSystem: {fileID: 852029928385863247}
 --- !u!95 &6982084178593964871
 Animator:
   serializedVersion: 5
