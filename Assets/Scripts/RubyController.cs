@@ -46,11 +46,8 @@ public class RubyController : MonoBehaviour
 
     //SCORE & UI
     public int score = 0;
-    public TMP_Text scoreUI;
-    public GameObject winUI;
     public GameObject loseUI;
     public bool gameOver = false;
-    public GameObject[] enemyObjects;
 
     void Start()
     {
@@ -149,8 +146,19 @@ public class RubyController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
         UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
+        if (currentHealth <= 0)
+        {
+            LoseGame();
+        }
+        Debug.Log(amount);
+        Debug.Log(currentHealth);
     }
 
+    public void LoseGame()
+    {
+        loseUI.SetActive(true);
+        gameOver = true;
+    }
 
 
     // =============== PROJECTICLE ========================
@@ -165,13 +173,7 @@ public class RubyController : MonoBehaviour
         audioSource.PlayOneShot(shootingSound);
     }
 
-    //SCORE
-    public void ChangeScore(int amount)
-    {
-        score += amount;
 
-        scoreUI.text = score.ToString();
-    }
 
     // =============== SOUND ==========================
 
