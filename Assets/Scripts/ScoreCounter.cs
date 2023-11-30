@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreCounter : MonoBehaviour
 {
     public static ScoreCounter instance;
 
-    public Text scoreText;
+    public TMP_Text scoreText;
 
     int score = 0;
 
