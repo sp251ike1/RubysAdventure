@@ -44,10 +44,10 @@ public class RubyController : MonoBehaviour
     // ================= SOUNDS =======================
     AudioSource audioSource;
 
-    //SCORE & UI
+    //SCORE & UI & GAME MANAGEMENT
     public int score = 0;
     public GameObject loseUI;
-    public bool gameOver = false;
+    public bool gameEnd = false;
 
     void Start()
     {
@@ -115,6 +115,25 @@ public class RubyController : MonoBehaviour
             }
         }
 
+
+        if (gameEnd)
+        {
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition;
+            if (Input.GetKey(KeyCode.R))
+
+            {
+
+                if (gameEnd == true)
+
+                {
+
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // this loads the currently active scene
+
+                }
+
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -157,7 +176,7 @@ public class RubyController : MonoBehaviour
     public void LoseGame()
     {
         loseUI.SetActive(true);
-        gameOver = true;
+        gameEnd = true;
     }
 
 
