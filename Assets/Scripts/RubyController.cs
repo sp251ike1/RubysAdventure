@@ -1,5 +1,8 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class RubyController : MonoBehaviour
 {
@@ -19,11 +22,7 @@ public class RubyController : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip shootingSound;
 
-    // ======== HEALTH ==========
-    public int health
-    {
-        get { return currentHealth; }
-    }
+
 
     // =========== MOVEMENT ==============
     Rigidbody2D rigidbody2d;
@@ -33,6 +32,10 @@ public class RubyController : MonoBehaviour
     int currentHealth;
     float invincibleTimer;
     bool isInvincible;
+    public int health
+    {
+        get { return currentHealth; }
+    }
 
     // ==== ANIMATION =====
     Animator animator;
@@ -40,6 +43,14 @@ public class RubyController : MonoBehaviour
 
     // ================= SOUNDS =======================
     AudioSource audioSource;
+
+    //SCORE & UI
+    public int score = 0;
+    public TMP_Text scoreUI;
+    public GameObject winUI;
+    public GameObject loseUI;
+    public bool gameOver = false;
+    public GameObject[] enemyObjects;
 
     void Start()
     {
@@ -137,17 +148,10 @@ public class RubyController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
-        if (currentHealth == 0)
-            Respawn();
-
         UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
     }
 
-    void Respawn()
-    {
-        ChangeHealth(maxHealth);
-        transform.position = respawnPosition.position;
-    }
+
 
     // =============== PROJECTICLE ========================
     void LaunchProjectile()
@@ -161,6 +165,14 @@ public class RubyController : MonoBehaviour
         audioSource.PlayOneShot(shootingSound);
     }
 
+    //SCORE
+    public void ChangeScore(int amount)
+    {
+        score += amount;
+
+        scoreUI.text = score.ToString();
+    }
+
     // =============== SOUND ==========================
 
     //Allow to play a sound on the player sound source. used by Collectible
@@ -169,3 +181,5 @@ public class RubyController : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 }
+
+

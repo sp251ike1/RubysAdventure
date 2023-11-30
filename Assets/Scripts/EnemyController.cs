@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
 
     Animator animator;
 
+    private ScoreCounter scoreCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +85,9 @@ public class EnemyController : MonoBehaviour
     {
         broken = false;
         rigidbody2D.simulated = false;
-        animator.SetTrigger("Fixed");       
+        animator.SetTrigger("Fixed");
         ParticleSystem.Stop();
+        ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
+        scoreCounter.ChangeScore(1);
     }
 }
