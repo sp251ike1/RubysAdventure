@@ -263,6 +263,8 @@ MonoBehaviour:
   vertical: 0
   changeTime: 3
   ParticleSystem: {fileID: 852029928385863247}
+  rubyController: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
+    type: 3}
 --- !u!95 &6982084178593964871
 Animator:
   serializedVersion: 5

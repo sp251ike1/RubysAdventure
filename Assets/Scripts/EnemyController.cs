@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float changeTime = 3.0f;
 
     public ParticleSystem ParticleSystem;
+    public RubyController rubyController;
 
     Rigidbody2D rigidbody2D;
     float timer;
@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     Animator animator;
 
-    private ScoreCounter scoreCounter;
+    //private ScoreCounter scoreCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        rubyController = FindObjectOfType<RubyController>();
     }
 
     void Update()
@@ -72,11 +73,11 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        RubyController player = other.gameObject.GetComponent<RubyController>();
+        RubyController controller = other.gameObject.GetComponent<RubyController>();
 
-        if (player != null)
+        if (controller != null)
         {
-            player.ChangeHealth(-1);        //decrease player health by a value of 1
+            controller.ChangeHealth(-1);        //decrease player health by a value of 1
         }
     }
 
@@ -87,7 +88,21 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.simulated = false;
         animator.SetTrigger("Fixed");
         ParticleSystem.Stop();
-        ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
-        scoreCounter.ChangeScore(1);
+        //ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
+        Debug.Log("Fixed");
+
+        if (rubyController != null)
+        {
+            rubyController.ChangeScore(1);
+            Debug.Log("Score increased");
+
+        }
+        Debug.Log("rubyController: " + rubyController);
     }
 }
+
+//controller.ChangeScore(1);
+//controller1.ChangeScore(1);
+//Debug.Log("score increased");
+//RubyController controller1 = other.collider.GetComponent<RubyController>();
+//RubyController controller = other.gameObject.GetComponent<RubyController>();

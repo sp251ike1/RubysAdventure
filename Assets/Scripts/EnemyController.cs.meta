@@ -3,7 +3,10 @@ guid: c355cf67d54abee4aae3b97fd7e93987
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ParticleSystem: {instanceID: 0}
+  - rubyController: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

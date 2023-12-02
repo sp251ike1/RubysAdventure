@@ -26,13 +26,16 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();     //e is variable representing instance of EnemyController script attached to object (in this case the enemy)
+        EnemyController e = other.collider.GetComponent<EnemyController>();
+
+
         if (e != null)
         {
-           e.Fix();     //Fix robot/enemy (look in enemy controller script)
+            e.Fix();
+
         }
 
-        Destroy(gameObject);    //destroy projectile
+        Destroy(gameObject);
     }
 }
 

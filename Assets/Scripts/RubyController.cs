@@ -1,6 +1,7 @@
 ﻿//ORIGINAL SCRIPT MADE BY STANLEY FREIHOFER
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -9,7 +10,7 @@ public class RubyController : MonoBehaviour
 {
     // ========= MOVEMENT =================
     public float speed = 4;
-    public float SlowSpeed = 200;
+    private float newSpeed;
 
     // ======== HEALTH ==========
     public int maxHealth = 5;
@@ -30,6 +31,8 @@ public class RubyController : MonoBehaviour
     // ======== AUDIO ==========
     public AudioClip hitSound;
     public AudioClip shootingSound;
+    public AudioClip winSound;
+    public AudioClip loseSound;
 
 
 
@@ -44,10 +47,14 @@ public class RubyController : MonoBehaviour
     // ================= SOUNDS =======================
     AudioSource audioSource;
 
-    //SCORE & UI & GAME MANAGEMENT
+    //SCORE & UI & GAME MANAGEMENT      //DON'T THINK OF THESE AS ACCESSING OBJECTS. THINK OF THESE AS CONTAINERS YOU WILL PUT THE OBJECTS YOU WANT TO ACCESS IN
     public int score = 0;
     public GameObject loseUI;
+    public GameObject winUI;
+    public GameObject ScoreUI;
+    public TMP_Text speedText;
     public bool gameEnd = false;
+    public TMP_Text scoreText;
 
     void Start()
     {
@@ -64,6 +71,9 @@ public class RubyController : MonoBehaviour
 
         // ==== AUDIO =====
         audioSource = GetComponent<AudioSource>();
+
+        scoreText.text = "Score: " + score.ToString() + " /4 Robots Fixed";
+        speedText.text = "Ruby is mid";
     }
 
     void Update()
@@ -175,20 +185,16 @@ public class RubyController : MonoBehaviour
         Debug.Log(currentHealth);
     }
 
+
+
     public void LoseGame()
     {
         loseUI.SetActive(true);
+        ScoreUI.SetActive(false);
         gameEnd = true;
     }
 
-    public void ChangeSpeed(int amount)
-    {
-        if (amount < 0)
-        {
-            speed = SlowSpeed;
 
-        }
-    }
 
     // =============== PROJECTICLE ========================
     void LaunchProjectile()
@@ -210,6 +216,32 @@ public class RubyController : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void ChangeScore(int amount)             //by Stanley Freihofer
+    {
+        score += amount;
+        //scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString() + "/4 Robots Fixed";
+        Debug.Log("Score changed by" + amount);
+        if (score >= 4)
+        {
+            scoreText.text = score.ToString("You Win! Game Created by Stanley Freihofer");
+            winUI.SetActive(true);
+        }
+    }
+
+    public void ChangeSpeed(int amount)         //by Stanley Freihofer
+    {
+        if (amount < 0)     //if the change in speed is < 0
+        {
+            Debug.Log("speed:" + speed + "newSpeed:" + newSpeed + "amount:" + amount);
+            newSpeed = speed + amount;
+            speed = newSpeed;
+            //speed += amount;
+            speedText.text = ("Ruby is Slow");
+
+        }
     }
 }
 
