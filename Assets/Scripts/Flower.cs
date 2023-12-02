@@ -1,3 +1,5 @@
+//SCRIPT MADE BY STANLEY FREIHOFER
+
 using UnityEngine;
 
 public class FlowerCollision : MonoBehaviour
