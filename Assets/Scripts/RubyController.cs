@@ -9,12 +9,20 @@ public class RubyController : MonoBehaviour
 {
     // ========= MOVEMENT =================
     public float speed = 4;
+    public float SlowSpeed = 200;
 
     // ======== HEALTH ==========
     public int maxHealth = 5;
     public float timeInvincible = 2.0f;
     public Transform respawnPosition;
     public ParticleSystem hitParticle;
+    int currentHealth;
+    float invincibleTimer;
+    bool isInvincible;
+    public int health
+    {
+        get { return currentHealth; }
+    }
 
     // ======== PROJECTILE ==========
     public GameObject projectilePrefab;
@@ -28,15 +36,6 @@ public class RubyController : MonoBehaviour
     // =========== MOVEMENT ==============
     Rigidbody2D rigidbody2d;
     Vector2 currentInput;
-
-    // ======== HEALTH ==========
-    int currentHealth;
-    float invincibleTimer;
-    bool isInvincible;
-    public int health
-    {
-        get { return currentHealth; }
-    }
 
     // ==== ANIMATION =====
     Animator animator;
@@ -52,6 +51,7 @@ public class RubyController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(speed);
         // =========== MOVEMENT ==============
         rigidbody2d = GetComponent<Rigidbody2D>();
 
@@ -68,6 +68,7 @@ public class RubyController : MonoBehaviour
 
     void Update()
     {
+
         // ================= HEALTH ====================
         if (isInvincible)
         {
@@ -149,7 +150,7 @@ public class RubyController : MonoBehaviour
     // ===================== HEALTH ==================
     public void ChangeHealth(int amount)
     {
-        if (amount < 0)
+        if (amount < 0)             //if the change in health is < 0
         {
             if (isInvincible)
                 return;
@@ -180,6 +181,14 @@ public class RubyController : MonoBehaviour
         gameEnd = true;
     }
 
+    public void ChangeSpeed(int amount)
+    {
+        if (amount < 0)
+        {
+            speed = SlowSpeed;
+
+        }
+    }
 
     // =============== PROJECTICLE ========================
     void LaunchProjectile()

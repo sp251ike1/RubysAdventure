@@ -297,57 +297,6 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 2090053545}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &20047619 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5992804022363540181, guid: 0d8b5aeaefe660945b8aa6b309f3f33a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1781703276}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &20047620
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20047619}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4}
-  m_EdgeRadius: 0
 --- !u!1 &24626709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +1931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower-1-2
       objectReference: {fileID: 0}
+    - target: {fileID: 8182203734953865377, guid: b021bcab25a52a94299e9e86a62770a2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3395,7 +3349,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e8cb00566f82df74e873a4f9a4c0d78e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.215
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4043,6 +3997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower-1-1
       objectReference: {fileID: 0}
+    - target: {fileID: 3170814162365523691, guid: 880c71238bcd45f4c8af462981c2d882,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4051,6 +4010,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1077824207}
+    - targetCorrespondingSourceObject: {fileID: 3170814162365523691, guid: 880c71238bcd45f4c8af462981c2d882,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1077824211}
   m_SourcePrefab: {fileID: 100100000, guid: 880c71238bcd45f4c8af462981c2d882, type: 3}
 --- !u!1 &464212667
 GameObject:
@@ -4724,57 +4687,6 @@ Transform:
   m_Father: {fileID: 700323170}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 87.377}
---- !u!1 &526287111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5213274847537688590, guid: 38785d063df980b44b2e83216c6bcec8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2104455570}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &526287112
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526287111}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4}
-  m_EdgeRadius: 0
 --- !u!1 &544682392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,6 +5510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ruby
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584281282501442210, guid: 6809f23136949a9488669a0f58179ef9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1584281282501442211, guid: 6809f23136949a9488669a0f58179ef9,
         type: 3}
@@ -9535,6 +9452,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &1077824211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077824204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f0b03d27893a4eba4b66c7f1c94a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 5
 --- !u!1 &1081683679
 GameObject:
   m_ObjectHideFlags: 0
@@ -14195,6 +14125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower-1-4
       objectReference: {fileID: 0}
+    - target: {fileID: 5992804022363540181, guid: 0d8b5aeaefe660945b8aa6b309f3f33a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 5992804022363540182, guid: 0d8b5aeaefe660945b8aa6b309f3f33a,
         type: 3}
       propertyPath: m_RootOrder
@@ -14268,11 +14203,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5992804022363540181, guid: 0d8b5aeaefe660945b8aa6b309f3f33a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 20047620}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8b5aeaefe660945b8aa6b309f3f33a, type: 3}
 --- !u!1 &1796086790
 GameObject:
@@ -22250,11 +22181,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5213274847537688590, guid: 38785d063df980b44b2e83216c6bcec8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 526287112}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38785d063df980b44b2e83216c6bcec8, type: 3}
 --- !u!1 &2132258382
 GameObject:

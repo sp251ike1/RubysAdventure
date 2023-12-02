@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 1025808930282252645}
   - component: {fileID: 8441551107898108903}
   - component: {fileID: 8199615930506318608}
+  - component: {fileID: 4960631503398171602}
   m_Layer: 0
   m_Name: Flower-1-1
   m_TagString: Untagged
@@ -288,7 +289,7 @@ Transform:
   - {fileID: 3170814161973491029}
   - {fileID: 3170814162128589112}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1025808930282252645
 Animator:
@@ -401,6 +402,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &4960631503398171602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170814162365523691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f0b03d27893a4eba4b66c7f1c94a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 5
+  BounceSound: {fileID: 0}
 --- !u!1 &3170814162495511440
 GameObject:
   m_ObjectHideFlags: 0
