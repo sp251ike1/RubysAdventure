@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {
@@ -10,21 +8,26 @@ public class HealthCollectible : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         RubyController controller = other.GetComponent<RubyController>();
-        controller.PlaySound(collectedClip1);    //play collectedHealth sound
-        collectParticle.Play();
-        //controller.Particle(collectParticle);
 
+        // Check if controller is not null before proceeding
         if (controller != null)
         {
+            controller.PlaySound(collectedClip1);
+
+            // Play particle system before destroying the GameObject
+            if (collectParticle != null)
+            {
+                collectParticle.Play();
+            }
+
+            // Check if player's health is less than max health
             if (controller.health < controller.maxHealth)
             {
-                controller.ChangeHealth(1); //increase playerHealth by a value of 1
-                Destroy(gameObject);        //destroy the object that gave health
-
-
-
+                controller.ChangeHealth(1);
             }
-        }
 
+            // Destroy the GameObject after collecting health
+            Destroy(gameObject);
+        }
     }
 }
