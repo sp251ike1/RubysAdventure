@@ -33,6 +33,7 @@ public class RubyController : MonoBehaviour
     public AudioClip shootingSound;
     public AudioClip winSound;
     public AudioClip loseSound;
+    AudioSource audioSource;
 
 
 
@@ -45,16 +46,32 @@ public class RubyController : MonoBehaviour
     Vector2 lookDirection = new Vector2(1, 0);
 
     // ================= SOUNDS =======================
-    AudioSource audioSource;
+ 
 
     //SCORE & UI & GAME MANAGEMENT      //DON'T THINK OF THESE AS ACCESSING OBJECTS. THINK OF THESE AS CONTAINERS YOU WILL PUT THE OBJECTS YOU WANT TO ACCESS IN
     public int score = 0;
     public GameObject loseUI;
     public GameObject winUI;
     public GameObject ScoreUI;
-    public TMP_Text speedText;
+    public TMP_Text speedDescription;
     public bool gameEnd = false;
     public TMP_Text scoreText;
+    public TMP_Text speedValue;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void Start()
     {
@@ -73,7 +90,8 @@ public class RubyController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         scoreText.text = "Score: " + score.ToString() + " /4 Robots Fixed";
-        speedText.text = "Ruby is mid";
+        speedDescription.text = "Ruby is mid";
+        speedValue.text = speed.ToString() + " Ruby Steps/hr";
     }
 
     void Update()
@@ -186,12 +204,13 @@ public class RubyController : MonoBehaviour
     }
 
 
-
+    // ================ LOSE GAME SCENARIO ===========================
     public void LoseGame()
     {
         loseUI.SetActive(true);
         ScoreUI.SetActive(false);
         gameEnd = true;
+        PlaySound(loseSound);
     }
 
 
@@ -224,24 +243,32 @@ public class RubyController : MonoBehaviour
         //scoreText.text = score.ToString();
         scoreText.text = "Score: " + score.ToString() + "/4 Robots Fixed";
         Debug.Log("Score changed by" + amount);
-        if (score >= 4)
+
+    //=============== WIN SCENARIO ==========================
+        if (score >= 4)         //WIN SCENARIO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
             scoreText.text = score.ToString("You Win! Game Created by Stanley Freihofer");
             winUI.SetActive(true);
+            PlaySound(winSound);
         }
     }
 
     public void ChangeSpeed(int amount)         //by Stanley Freihofer
     {
-        if (amount < 0)     //if the change in speed is < 0
+        if (amount < 4)     //if the change in speed is < 0
         {
             Debug.Log("speed:" + speed + "newSpeed:" + newSpeed + "amount:" + amount);
-            newSpeed = speed + amount;
-            speed = newSpeed;
-            //speed += amount;
-            speedText.text = ("Ruby is Slow");
-
+            speed = amount;
+            speedDescription.text = ("Ruby is Slow");
+            speedValue.text = speed.ToString() + " Ruby Steps/hr";
         }
+        if (amount > 4)
+        {
+            speed = amount;
+            speedDescription.text = ("Ruby is Fast");
+            speedValue.text = speed.ToString() + " Ruby Steps/hr";
+        }
+            
     }
 }
 

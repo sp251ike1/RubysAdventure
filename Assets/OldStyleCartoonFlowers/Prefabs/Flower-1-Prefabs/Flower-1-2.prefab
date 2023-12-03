@@ -330,8 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643f0b03d27893a4eba4b66c7f1c94a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 5
-  BounceSound: {fileID: 0}
+  Flower: {fileID: 8300000, guid: 3c4e742f462b8b741a1f87e505ea69d4, type: 3}
 --- !u!1 &8182203734976954463
 GameObject:
   m_ObjectHideFlags: 0

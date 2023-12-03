@@ -6,7 +6,6 @@ public class FlowerCollision : MonoBehaviour
 {
 
     public AudioClip Flower;
-    public int SpeedDecreaser = -1;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,7 +16,8 @@ public class FlowerCollision : MonoBehaviour
         if (controller != null)
         {
             controller.PlaySound(Flower);
-            controller.ChangeSpeed(SpeedDecreaser);
+            //controller.speed = 3;
+            controller.ChangeSpeed(3);
             Debug.Log(controller.speed);
 
 
