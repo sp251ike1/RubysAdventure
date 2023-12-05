@@ -60,7 +60,7 @@ public class RubyController : MonoBehaviour
 
 
 
-    void Start()            //by Stanley Freihofer
+    void Start()        //by Stanley Freihofer
     {
         Debug.Log(speed);
         // =========== MOVEMENT ==============
@@ -81,7 +81,7 @@ public class RubyController : MonoBehaviour
         speedValue.text = speed.ToString() + " Ruby Steps/hr";
     }
 
-    void Update()           //by Stanley Freihofer
+    void Update()       //by Stanley Freihofer
     {
 
         // ================= HEALTH ====================
@@ -153,7 +153,7 @@ public class RubyController : MonoBehaviour
 
     }
 
-    void FixedUpdate()      //by Stanley Freihofer
+    void FixedUpdate()          //by Stanley Freihofer
     {
         Vector2 position = rigidbody2d.position;
 
@@ -192,7 +192,7 @@ public class RubyController : MonoBehaviour
 
 
     // ================ LOSE GAME SCENARIO ===========================
-    public void LoseGame()      //by Stanley Freihofer
+    public void LoseGame()
     {
         loseUI.SetActive(true);
         ScoreUI.SetActive(false);
@@ -202,8 +202,8 @@ public class RubyController : MonoBehaviour
 
 
 
-    // =============== PROJECTICLE ========================     
-    void LaunchProjectile()     //by Stanley Freihofer
+    // =============== PROJECTICLE ========================
+    void LaunchProjectile()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
 
@@ -231,7 +231,7 @@ public class RubyController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString() + "/4 Robots Fixed";
         Debug.Log("Score changed by" + amount);
 
-    //=============== WIN SCENARIO ========================== by Stanley Freihofer
+    //=============== WIN SCENARIO ==========================
         if (score >= 4)         //WIN SCENARIO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
             scoreText.text = score.ToString("You Win! Game Created by Stanley Freihofer");
@@ -240,7 +240,7 @@ public class RubyController : MonoBehaviour
         }
     }
 
-    public void ChangeSpeed(int amount)             //by Stanley Freihofer
+    public void ChangeSpeed(int amount)         //by Stanley Freihofer
     {
         if (amount < 4)     //if the change in speed is < 0
         {
