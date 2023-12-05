@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Script made by Stanley Freihofer
+
+using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {

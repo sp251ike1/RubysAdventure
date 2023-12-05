@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.Design.Serialization;
+﻿//Script made by Stanley Freihofer
+
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class DamageZone : MonoBehaviour 
@@ -12,7 +14,7 @@ public class DamageZone : MonoBehaviour
 
         if (controller != null)
         {
-            controller.ChangeHealth(-1);   //increase playerHealth by a value of 1
+            controller.ChangeHealth(-1);   //decrease playerHealth by a value of 1
 
         }
     }
