@@ -60,20 +60,7 @@ public class RubyController : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    void Start()
+    void Start()        //by Stanley Freihofer
     {
         Debug.Log(speed);
         // =========== MOVEMENT ==============
@@ -94,7 +81,7 @@ public class RubyController : MonoBehaviour
         speedValue.text = speed.ToString() + " Ruby Steps/hr";
     }
 
-    void Update()
+    void Update()       //by Stanley Freihofer
     {
 
         // ================= HEALTH ====================
@@ -166,7 +153,7 @@ public class RubyController : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void FixedUpdate()          //by Stanley Freihofer
     {
         Vector2 position = rigidbody2d.position;
 
@@ -176,7 +163,7 @@ public class RubyController : MonoBehaviour
     }
 
     // ===================== HEALTH ==================
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)        //by Stanley Freihofer
     {
         if (amount < 0)             //if the change in health is < 0
         {
@@ -232,7 +219,7 @@ public class RubyController : MonoBehaviour
     // =============== SOUND ==========================
 
     //Allow to play a sound on the player sound source. used by Collectible
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)       //by Stanley Freihofer
     {
         audioSource.PlayOneShot(clip);
     }

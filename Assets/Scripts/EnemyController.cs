@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Orignal script created by Stanley Freihofer
+using System;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -20,7 +21,7 @@ public class EnemyController : MonoBehaviour
     //private ScoreCounter scoreCounter;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()                //by Stannley Freihofer
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
@@ -28,7 +29,7 @@ public class EnemyController : MonoBehaviour
         rubyController = FindObjectOfType<RubyController>();
     }
 
-    void Update()
+    void Update()       //by Stanley Freihofer
     {
         //remember ! inverse the test, so if broken is true !broken will be false and return won’t be executed.
         if (!broken)
@@ -45,7 +46,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void FixedUpdate()          //by Stanley Freihofer
     {
         //remember ! inverse the test, so if broken is true !broken will be false and return won’t be executed.
         if (!broken)
@@ -71,7 +72,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.MovePosition(position);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)      //by Stanley Freihofer
     {
         RubyController controller = other.gameObject.GetComponent<RubyController>();
 
@@ -81,6 +82,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //by Stanley Freihofer
     //Public because we want to call it from elsewhere like the projectile script
     public void Fix()           //Fix broken robots function
     {
