@@ -178,11 +178,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   maxHealth: 5
+  timeInvincible: 2
+  respawnPosition: {fileID: 0}
+  hitParticle: {fileID: 0}
   projectilePrefab: {fileID: 540222671576581450, guid: 5847c61d20e6ce04dbc333e41dad3ec2,
     type: 3}
-  throwSound: {fileID: 0}
   hitSound: {fileID: 8300000, guid: c7d3a91ac32abbe47a8931a8ffc37bc6, type: 3}
-  timeInvincible: 2
+  shootingSound: {fileID: 0}
+  winSound: {fileID: 0}
+  loseSound: {fileID: 0}
+  score: 0
+  loseUI: {fileID: 0}
+  winUI: {fileID: 0}
+  ScoreUI: {fileID: 0}
+  speedDescription: {fileID: 0}
+  gameEnd: 0
+  scoreText: {fileID: 0}
+  speedValue: {fileID: 0}
 --- !u!95 &7835389012148503428
 Animator:
   serializedVersion: 5
