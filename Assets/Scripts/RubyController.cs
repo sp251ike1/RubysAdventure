@@ -60,20 +60,7 @@ public class RubyController : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    void Start()
+    void Start()            //by Stanley Freihofer
     {
         Debug.Log(speed);
         // =========== MOVEMENT ==============
@@ -94,7 +81,7 @@ public class RubyController : MonoBehaviour
         speedValue.text = speed.ToString() + " Ruby Steps/hr";
     }
 
-    void Update()
+    void Update()           //by Stanley Freihofer
     {
 
         // ================= HEALTH ====================
@@ -166,7 +153,7 @@ public class RubyController : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void FixedUpdate()      //by Stanley Freihofer
     {
         Vector2 position = rigidbody2d.position;
 
@@ -176,7 +163,7 @@ public class RubyController : MonoBehaviour
     }
 
     // ===================== HEALTH ==================
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)        //by Stanley Freihofer
     {
         if (amount < 0)             //if the change in health is < 0
         {
@@ -205,7 +192,7 @@ public class RubyController : MonoBehaviour
 
 
     // ================ LOSE GAME SCENARIO ===========================
-    public void LoseGame()
+    public void LoseGame()      //by Stanley Freihofer
     {
         loseUI.SetActive(true);
         ScoreUI.SetActive(false);
@@ -215,8 +202,8 @@ public class RubyController : MonoBehaviour
 
 
 
-    // =============== PROJECTICLE ========================
-    void LaunchProjectile()
+    // =============== PROJECTICLE ========================     
+    void LaunchProjectile()     //by Stanley Freihofer
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
 
@@ -232,7 +219,7 @@ public class RubyController : MonoBehaviour
     // =============== SOUND ==========================
 
     //Allow to play a sound on the player sound source. used by Collectible
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)       //by Stanley Freihofer
     {
         audioSource.PlayOneShot(clip);
     }
@@ -244,7 +231,7 @@ public class RubyController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString() + "/4 Robots Fixed";
         Debug.Log("Score changed by" + amount);
 
-    //=============== WIN SCENARIO ==========================
+    //=============== WIN SCENARIO ========================== by Stanley Freihofer
         if (score >= 4)         //WIN SCENARIO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
             scoreText.text = score.ToString("You Win! Game Created by Stanley Freihofer");
@@ -253,7 +240,7 @@ public class RubyController : MonoBehaviour
         }
     }
 
-    public void ChangeSpeed(int amount)         //by Stanley Freihofer
+    public void ChangeSpeed(int amount)             //by Stanley Freihofer
     {
         if (amount < 4)     //if the change in speed is < 0
         {
