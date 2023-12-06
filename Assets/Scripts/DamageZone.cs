@@ -1,9 +1,12 @@
-﻿//Script made by Stanley Freihofer
+//SCRIPT MADE BY STANLEY FREIHOFER
 
+
+
+//line 21 modifed by Caio Simnetta
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
-public class DamageZone : MonoBehaviour 
+public class DamageZone : MonoBehaviour         //made by Stanley Freihofer
 {
 
     public ParticleSystem particleEffect;
@@ -14,7 +17,8 @@ public class DamageZone : MonoBehaviour
 
         if (controller != null)
         {
-            controller.ChangeHealth(-1);   //decrease playerHealth by a value of 1
+
+            controller.ChangeHealth(-2);   //ORIGNAL LINE MADE BY STANLEY FREIHOFER (ORIGINAL VALUE WAS -1). CAIO SIMONNETTA CHANGED THE VALUE TO -2
 
         }
     }
