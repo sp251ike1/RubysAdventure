@@ -11,7 +11,7 @@ public class DamageZone : MonoBehaviour         //made by Stanley Freihofer
 
     public ParticleSystem particleEffect;
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)      //made by Stanley Freihofer
     {
         RubyController controller = other.GetComponent<RubyController>();
 

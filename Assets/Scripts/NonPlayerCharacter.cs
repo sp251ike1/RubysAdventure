@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//script made by Stanley Freihofer
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
